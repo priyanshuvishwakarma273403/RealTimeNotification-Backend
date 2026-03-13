@@ -20,7 +20,7 @@ public class JwtService {
     @Value("${app.jwt.expiration}")
     private long expiration;
 
-    private String extractUsername(String token) {
+    public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
