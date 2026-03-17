@@ -13,7 +13,7 @@ public class RegisterRequest {
     @NotBlank
     private String email;
 
-
+    private String phoneNumber;
     @NotBlank
     private String password;
 

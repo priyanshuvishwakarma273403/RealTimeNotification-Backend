@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/realtime_app?createDatabaseIfNotExist=true&useSSL=false&serverTimezone=Asia/Kolkata
     username: root
-    password: root
+    password: pop99558$$
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -21,6 +21,7 @@ spring:
       port: 6379
 
   kafka:
+    enabled: false  # Set to true once Kafka broker is running at localhost:9092
     bootstrap-servers: localhost:9092
     consumer:
       group-id: realtime-app-group
@@ -35,5 +36,5 @@ spring:
 
 app:
   jwt:
-    secret: your-super-secret-key-your-super-secret-key
+    secret: YTJiM2M0ZDVlNmY3YThjOWIwYzFkMmUzZjRhNWI2Yzc=
     expiration: 86400000

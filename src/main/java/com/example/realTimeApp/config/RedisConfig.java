@@ -10,7 +10,10 @@ public class RedisConfig {
 
     @Bean
     public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory connectionFactory) {
-        return new StringRedisTemplate(connectionFactory);
+        StringRedisTemplate template = new StringRedisTemplate(connectionFactory);
+        // Enable resilient connection – don't fail if Redis is temporarily down
+        template.setEnableDefaultSerializer(true);
+        return template;
     }
 
 }

@@ -6,7 +6,7 @@ import com.example.realTimeApp.chat.dto.SendMessageRequest;
 import com.example.realTimeApp.chat.repository.ChatMessageRepository;
 import com.example.realTimeApp.common.util.SecurityUtils;
 import com.example.realTimeApp.kafka.event.MessageCreatedEvent;
-import com.example.realTimeApp.kafka.producer.ChatEventProducer;
+import com.example.realTimeApp.kafka.producer.ChatEventPublisher;
 import com.example.realTimeApp.redis.UnreadCacheService;
 import com.example.realTimeApp.user.entity.User;
 import com.example.realTimeApp.user.repository.UserRepository;
@@ -24,7 +24,7 @@ public class ChatService {
 
     private final ChatMessageRepository chatMessageRepository;
     private final UserRepository userRepository;
-    private final ChatEventProducer chatEventProducer;
+    private final ChatEventPublisher chatEventProducer;
     private final SimpMessagingTemplate messagingTemplate;
     private final UnreadCacheService unreadCacheService;
 
@@ -69,7 +69,7 @@ public class ChatService {
     }
 
     public List<ChatMessage> getMessages(Long roomId, int page, int size) {
-        return chatMessageRepository.findByRoomIdOrderByCreatedAtDesc(roomId, PageRequest.of(page, size));
+        return chatMessageRepository.findByRoomIdOrderByCreatedAtAsc(roomId, PageRequest.of(page, size));
     }
 
 }

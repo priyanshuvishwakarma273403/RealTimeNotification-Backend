@@ -10,4 +10,5 @@ public class RealTimeAppApplication {
 		SpringApplication.run(RealTimeAppApplication.class, args);
 	}
 
+
 }
